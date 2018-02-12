@@ -103,15 +103,7 @@ def cb(date1, date2, lesson, home_path, num, path_yuh):
         out2 = subprocess.Popen(ml_mp4_ts, shell=True)
         out2.wait()
 
-    # num = 540
-    # date1 = "1.25"
-    # date2 = "am"
-    # lesson = "物理"
-    # home_path = '/media/yuh/Linux中转/mp4/'
 
-    # lesson_dict = {"数学": "Math", "语文": "Chinese", "英语": "English",
-    #                "化学": "Chemistry", "物理": "Physics", "历史": "History",
-    #                "生物": "Biology"}
 
     name = date1 + date2 + "." + lesson + ".mp4"
 
