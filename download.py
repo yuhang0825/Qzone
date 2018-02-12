@@ -17,9 +17,6 @@ def dl(date1, date2, lesson, home_path, url, num):
             print(str(n)+' error')
             error.append(n)
 
-    # data = '1.20/pm/yingyu/'
-    # http://2001.tbovod.myqcloud.com/xzonesz/31002_b8357d671c7c32f1_1378.ts
-
     error0 = []
     for i in range(1, num+1):
         dl(i, error0)
