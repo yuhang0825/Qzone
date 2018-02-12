@@ -103,8 +103,6 @@ def cb(date1, date2, lesson, home_path, num, path_yuh):
         out2 = subprocess.Popen(ml_mp4_ts, shell=True)
         out2.wait()
 
-
-
     name = date1 + date2 + "." + lesson + ".mp4"
 
     file_path = home_path + date1 + "/" + date2 + "/" + lesson + "/"
@@ -117,7 +115,7 @@ def cb(date1, date2, lesson, home_path, num, path_yuh):
     for i in files:
         for k in str(i):
             if k == '.':
-                j = j +1
+                j = j + 1
                 break
 
     files_n = j
