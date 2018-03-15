@@ -1,12 +1,11 @@
 import os
 import combine
 import download
+from Date import *
 
-home_path = '/home/yuh/'
-path_yuh = '/home/yuh/rs/'
 error_main = []
 
-with open("/home/yuh/rs/dl.txt", "r", encoding='utf') as dl:
+with open(down_txt_path, "r", encoding='utf') as dl:
     for line in dl:
         one = line.split(' ', 4)
         # print(one)

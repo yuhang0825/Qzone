@@ -1,6 +1,11 @@
+from Date import *
+
+
 def dl(date1, date2, lesson, home_path, url, num):
+    global p
     import urllib.request
     import socket
+    from multiprocessing import Process
 
     data = date1 + '/' + date2 + '/' + lesson + '/'
 
@@ -13,24 +18,25 @@ def dl(date1, date2, lesson, home_path, url, num):
             socket.setdefaulttimeout(30)
             urllib.request.urlretrieve(urln, path)
             print(str(n)+' success')
-        except:
-            print(str(n)+' error')
+        except Exception as e1:
+            print(str(n)+' error ' + str(e1))
             error.append(n)
 
     error0 = []
-    for i in range(1, num+1):
-        dl(i, error0)
 
-        # path = home_path + data + str(i) + '.ts'
-        # print(path)
-        # urli = url + str(i) + '.ts'
-        # print(urli)
-        # try:
-        #     urllib.request.urlretrieve(urli, path)
-        #     print(str(i)+' success')
-        # except:
-        #     print(str(i)+' error')
-        #     error0.append(i)
+    def dl_P(P_n1, P_n2):
+        for i in range(P_n1, P_n2):
+            dl(i, error0)
+
+    batchSize = (num+1) // process_n
+
+    for i in range(process_n):
+        if i != process_n-1:
+            p = Process(target=dl_P, args=(i*batchSize+1, (i+1)*batchSize+1))
+        else:
+            p = Process(target=dl_P, args=(i*batchSize+1, num+1))
+        p.start()
+    p.join()
 
     print(error0)
 
